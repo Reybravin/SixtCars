@@ -28,6 +28,8 @@ class ListViewController: UITableViewController {
 
     private func setupView(){
         tableView.register(CarCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 70
     }
     
     private func updateCarAnnotations(){
@@ -62,106 +64,9 @@ class ListViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
-    }
-    
-}
-
-
-
-class CarCell : UITableViewCell {
-    
-    var car : Car?
-    
-    let carImageView : CarImageView = {
-        let imageView = CarImageView()
-        imageView.contentMode = UIView.ContentMode.scaleAspectFit
-        imageView.clipsToBounds = true
-        return imageView
-    }()
-    
-    let titleLabel : UILabel = {
-        return UILabel.Factory.makeForTitle()
-    }()
-    
-    let fuelLabel : UILabel = {
-        return UILabel.Factory.makeForSubtitle()
-    }()
-    
-    let transmissionLabel : UILabel = {
-        return UILabel.Factory.makeForSubtitle()
-    }()
-    
-    let stackView : UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.distribution = .fillEqually
-        return stackView
-    }()
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupView()
-        setupLayout()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func setupView() {
-        
-        stackView.addArrangedSubview(fuelLabel)
-        stackView.addArrangedSubview(transmissionLabel)
-        
-        addSubview(titleLabel)
-        addSubview(carImageView)
-        addSubview(stackView)
-        
-        carImageView.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        
-    }
-    
-    private func setupLayout(){
-        
-        NSLayoutConstraint.activate([
-            
-            carImageView.topAnchor.constraint(equalTo: topAnchor, constant: 2),
-            carImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -2),
-            carImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 2),
-            carImageView.widthAnchor.constraint(equalToConstant: 70),
-            
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 2),
-            titleLabel.leadingAnchor.constraint(equalTo: carImageView.trailingAnchor, constant: 10),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            titleLabel.heightAnchor.constraint(equalToConstant: 30),
-            
-            stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -2),
-            stackView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor)
-            
-            ])
-    }
-    
-    func configureView(for car: Car){
-        self.car = car
-        titleLabel.text = getTitle(for: car)
-        fuelLabel.text = "Fuel type: \(car.fuelType)"
-        transmissionLabel.text = "Transmission: \(car.transmission)"
-        carImageView.loadAndResizeImage(urlString: car.carImageUrl)
-        
-    }
-    
-    private func getTitle(for car: Car) -> String {
-        let make = car.make
-        let modelName = car.modelName
-        let cleanliness = car.innerCleanliness
-        return "\(make) \(modelName) (\(cleanliness))"
-    }
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 80
+//    }
     
 }
 

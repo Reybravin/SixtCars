@@ -20,7 +20,13 @@ class MapViewController: UIViewController {
         return mapView
     }()
     
-    private var carAnnotations : [Car] = []
+    private var carAnnotations : [Car] = [] {
+        didSet {
+            DispatchQueue.main.async {
+               self.reloadCarAnnotations()
+            }
+        }
+    }
     
     //MARK: - Life cycle
     
@@ -28,11 +34,11 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         setupView()
         setupLayout()
+        updateCarAnnotations()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        updateCarAnnotations()
     }
     
     //MARK: - Methods
@@ -58,7 +64,7 @@ class MapViewController: UIViewController {
             case .success(let cars):
                 guard let strongSelf = self else { return }
                 strongSelf.carAnnotations = cars
-                strongSelf.addCarAnnotations()
+//                strongSelf.reloadCarAnnotations()
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -66,7 +72,8 @@ class MapViewController: UIViewController {
 
     }
     
-    private func addCarAnnotations(){
+    private func reloadCarAnnotations(){
+        mapView.removeAnnotations(carAnnotations)
         mapView.addAnnotations(carAnnotations)
     }
     
