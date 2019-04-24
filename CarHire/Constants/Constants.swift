@@ -13,6 +13,7 @@ struct Images {
     static let defaultCarImageSize : CGSize = CGSize(width: 70, height: 40)
     
     static let defaultCarImage = UIImage(named: "ic_car_default")
+    
 }
 
 struct Colors {

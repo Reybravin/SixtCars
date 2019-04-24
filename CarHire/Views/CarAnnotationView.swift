@@ -12,10 +12,26 @@ import MapKit
 class CarAnnotationView: MKAnnotationView {
 
     static let ReuseID = "carAnnotation"
+    
+    private var imageView: CarImageView!
 
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         clusteringIdentifier = "car"
+        
+        self.frame = CGRect(x: 0, y: 0, width: Images.defaultCarImageSize.width, height: Images.defaultCarImageSize.height)
+        self.imageView = CarImageView(frame: self.frame)
+        self.addSubview(self.imageView)
+        
+    }
+    
+    override var image: UIImage? {
+        get {
+            return self.imageView.image
+        }
+        set {
+            self.imageView.image = newValue
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -25,19 +41,32 @@ class CarAnnotationView: MKAnnotationView {
     override func prepareForDisplay() {
         super.prepareForDisplay()
         displayPriority = .defaultLow
-        setupGlyphImage()
+        setupImage()
+        //setupGlyphImage()
     }
 
-    private func setupGlyphImage(){
+//    private func setupGlyphImage(){
+//        if let annotation = annotation as? Car {
+//            loadAndResizeImage(urlString: annotation.carImageUrl)
+//        } else {
+//            setDefaultImage()
+//        }
+//    }
+    
+    private func setupImage(){
         if let annotation = annotation as? Car {
-            loadAndResizeImage(urlString: annotation.carImageUrl)
+            imageView.loadAndResizeImage(urlString: annotation.carImageUrl)
+            //loadAndResizeImage(urlString: annotation.carImageUrl)
         } else {
             setDefaultImage()
         }
     }
+
     
     private func setDefaultImage(){
         image = Images.defaultCarImage
     }
+    
+    
     
 }

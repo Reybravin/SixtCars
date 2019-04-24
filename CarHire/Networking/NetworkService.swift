@@ -6,7 +6,7 @@
 //  Copyright © 2019 SergiySachuk. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class NetworkService {
     
@@ -53,6 +53,28 @@ class NetworkService {
         URLSession.shared.dataTask(with: request, completionHandler: completionHandler)
             .resume()
     }
+    
+    func loadImage(urlString: String, completion: @escaping(_ image: UIImage?) -> Void) {
+        
+        guard let url = URL(string: urlString) else {
+            completion(nil)
+            return
+        }
+        
+        let completionHandler: NetworkCompletionHandler = { (data, _, _) in
+            if let data = data {
+                if let image = UIImage(data: data) {
+                    completion(image)
+                    return
+                }
+            }
+            completion(nil)
+        }
+        
+        URLSession.shared.dataTask(with: url, completionHandler: completionHandler)
+            .resume()
+    }
+    
     
     //MARK: - Helper methods
     

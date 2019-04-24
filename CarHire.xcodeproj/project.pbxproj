@@ -11,6 +11,7 @@
 		500724E0226F5209002E49AB /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500724DF226F5209002E49AB /* ListViewController.swift */; };
 		500724E4226F68A7002E49AB /* UILabel+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500724E3226F68A7002E49AB /* UILabel+Factory.swift */; };
 		500724E6226F6E05002E49AB /* CarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500724E5226F6E05002E49AB /* CarCell.swift */; };
+		500724E822703E42002E49AB /* CarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500724E722703E42002E49AB /* CarImageView.swift */; };
 		5020736F22676B80004ECB5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5020736E22676B80004ECB5E /* AppDelegate.swift */; };
 		5020737122676B80004ECB5E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5020737022676B80004ECB5E /* MapViewController.swift */; };
 		5020737422676B80004ECB5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5020737222676B80004ECB5E /* Main.storyboard */; };
@@ -22,7 +23,7 @@
 		506B503E226DAFE200015D72 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506B503D226DAFE200015D72 /* NetworkService.swift */; };
 		506B5048226DB3C800015D72 /* UIImage+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506B5047226DB3C800015D72 /* UIImage+Cache.swift */; };
 		509581C02268D1B600F2B4B3 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509581BF2268D1B600F2B4B3 /* Car.swift */; };
-		509581C82269C2B600F2B4B3 /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509581C72269C2B600F2B4B3 /* UIImageView+Ext.swift */; };
+		509581C82269C2B600F2B4B3 /* MKAnnotationView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509581C72269C2B600F2B4B3 /* MKAnnotationView+Ext.swift */; };
 		509581CA2269C2F300F2B4B3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509581C92269C2F300F2B4B3 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		500724DF226F5209002E49AB /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		500724E3226F68A7002E49AB /* UILabel+Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Factory.swift"; sourceTree = "<group>"; };
 		500724E5226F6E05002E49AB /* CarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCell.swift; sourceTree = "<group>"; };
+		500724E722703E42002E49AB /* CarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarImageView.swift; sourceTree = "<group>"; };
 		5020736B22676B80004ECB5E /* CarHire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarHire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5020736E22676B80004ECB5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5020737022676B80004ECB5E /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -56,7 +58,7 @@
 		506B503D226DAFE200015D72 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		506B5047226DB3C800015D72 /* UIImage+Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Cache.swift"; sourceTree = "<group>"; };
 		509581BF2268D1B600F2B4B3 /* Car.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
-		509581C72269C2B600F2B4B3 /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
+		509581C72269C2B600F2B4B3 /* MKAnnotationView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKAnnotationView+Ext.swift"; sourceTree = "<group>"; };
 		509581C92269C2F300F2B4B3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -163,6 +165,7 @@
 			children = (
 				500724DD226F471D002E49AB /* CarAnnotationView.swift */,
 				500724E5226F6E05002E49AB /* CarCell.swift */,
+				500724E722703E42002E49AB /* CarImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -171,7 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				500724E3226F68A7002E49AB /* UILabel+Factory.swift */,
-				509581C72269C2B600F2B4B3 /* UIImageView+Ext.swift */,
+				509581C72269C2B600F2B4B3 /* MKAnnotationView+Ext.swift */,
 				506B5047226DB3C800015D72 /* UIImage+Cache.swift */,
 			);
 			path = Extensions;
@@ -285,8 +288,9 @@
 				506B503C226DAFA500015D72 /* SixtAPI.swift in Sources */,
 				500724DE226F471D002E49AB /* CarAnnotationView.swift in Sources */,
 				500724E4226F68A7002E49AB /* UILabel+Factory.swift in Sources */,
+				500724E822703E42002E49AB /* CarImageView.swift in Sources */,
 				500724E0226F5209002E49AB /* ListViewController.swift in Sources */,
-				509581C82269C2B600F2B4B3 /* UIImageView+Ext.swift in Sources */,
+				509581C82269C2B600F2B4B3 /* MKAnnotationView+Ext.swift in Sources */,
 				509581CA2269C2F300F2B4B3 /* Constants.swift in Sources */,
 				506B503E226DAFE200015D72 /* NetworkService.swift in Sources */,
 				506B5048226DB3C800015D72 /* UIImage+Cache.swift in Sources */,

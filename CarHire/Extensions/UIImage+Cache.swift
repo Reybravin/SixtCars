@@ -28,4 +28,9 @@ extension UIImage {
         return newImage ?? self
     }
     
+    static func getKeyForCaching(title: String) -> String {
+        let suffix = "\(Images.defaultCarImageSize.width)" + "x" + "\(Images.defaultCarImageSize.height)"
+        return title + suffix
+    }
+    
 }
