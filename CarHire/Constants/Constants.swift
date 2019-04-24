@@ -8,6 +8,8 @@
 
 import UIKit
 
+let imageCache = NSCache<AnyObject,AnyObject>()
+
 struct Images {
     
     static let defaultCarImageSize : CGSize = CGSize(width: 70, height: 40)
