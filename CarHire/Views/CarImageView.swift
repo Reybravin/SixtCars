@@ -27,67 +27,22 @@ class CarImageView : UIImageView {
         }
         
         //2. Download if not found in cache
-        NetworkService.shared.loadImage(urlString: urlString) { (image) in
+        NetworkService.shared.loadImage(urlString: urlString) { [weak self] (image) in
             if let image = image {
                 let resizedImage = image.resizeImage(targetSize: Images.defaultCarImageSize)
-                if self.imageUrlString == urlString {
+                if self?.imageUrlString == urlString {
                     DispatchQueue.main.async {
-                        self.image = resizedImage
+                        self?.image = resizedImage
                     }
                 }
                 imageCache.setObject(resizedImage, forKey: key as AnyObject)
                 return
             }
             DispatchQueue.main.async {
-                self.image = Images.defaultCarImage?.resizeImage(targetSize: Images.defaultCarImageSize)
+                self?.image = Images.defaultCarImage?.resizeImage(targetSize: Images.defaultCarImageSize)
             }
         }
-        
+
     }
-    
-    
-    
-    //    func loadAndResizeImage(urlString: String) {
-    //
-    //        imageUrlString = urlString
-    //
-    //        self.image = nil
-    //
-    //        //1. Try to get the image from cache
-    //        let suffix = "\(Images.defaultCarImageSize.width)" + "x" + "\(Images.defaultCarImageSize.height)"
-    //
-    //        let key = urlString + suffix
-    //
-    //        if let imageFromCache = imageCache.object(forKey: key as AnyObject) as? UIImage {
-    //            self.image = imageFromCache
-    //            return
-    //        }
-    //
-    //        //2. Download if not found in cache
-    //        guard let url = URL(string: urlString) else {return}
-    //
-    //        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-    //
-    //            if error != nil {
-    //                print(error as Any)
-    //                return
-    //            }
-    //
-    //            DispatchQueue.main.async {
-    //                if let data = data {
-    //                    if let imageToCache = UIImage(data: data) {
-    //                        let resizedImage = imageToCache.resizeImage(targetSize: Images.defaultCarImageSize)
-    //                        if self.imageUrlString == urlString {
-    //                            self.image = resizedImage
-    //                        }
-    //                        imageCache.setObject(resizedImage, forKey: key as AnyObject)
-    //                        return
-    //                    }
-    //                }
-    //                self.image = Images.defaultCarImage?.resizeImage(targetSize: Images.defaultCarImageSize)
-    //            }
-    //        }
-    //        task.resume()
-    //    }
     
 }

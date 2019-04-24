@@ -42,31 +42,18 @@ class CarAnnotationView: MKAnnotationView {
         super.prepareForDisplay()
         displayPriority = .defaultLow
         setupImage()
-        //setupGlyphImage()
     }
-
-//    private func setupGlyphImage(){
-//        if let annotation = annotation as? Car {
-//            loadAndResizeImage(urlString: annotation.carImageUrl)
-//        } else {
-//            setDefaultImage()
-//        }
-//    }
     
     private func setupImage(){
         if let annotation = annotation as? Car {
             imageView.loadAndResizeImage(urlString: annotation.carImageUrl)
-            //loadAndResizeImage(urlString: annotation.carImageUrl)
         } else {
             setDefaultImage()
         }
     }
 
-    
     private func setDefaultImage(){
         image = Images.defaultCarImage
     }
-    
-    
     
 }
